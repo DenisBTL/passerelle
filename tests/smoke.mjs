@@ -218,6 +218,109 @@ try {
       });
   }
   await page.setViewportSize({ width: 390, height: 844 });
+  // Sur mobile, sélectionner une étape filtre les projets sans ouvrir le formulaire.
+  const explorer = page.getByRole("region", {
+    name: "Explorer les projets par étape",
+  });
+  await explorer.waitFor();
+  const draftStageBefore = await page
+    .getByLabel("Étape concernée")
+    .inputValue();
+  const expectedProjects = [
+    ["Parcelles", 1],
+    ["Vendanges", 1],
+    ["Cuverie", 1],
+    ["Mises", 2],
+    ["Stocks", 2],
+    ["Ventes", 3],
+    ["Clients", 2],
+    ["Administratif", 2],
+    ["Après-vente / Fidélisation", 2],
+  ];
+  for (const [label, count] of expectedProjects) {
+    await explorer
+      .getByRole("button", { name: `Voir les projets : ${label}`, exact: true })
+      .click();
+    assert.equal(
+      await explorer.locator("#stage-projects-title").textContent(),
+      label,
+    );
+    assert.equal(await explorer.locator(".stage-project-card").count(), count);
+    assert.equal(
+      await explorer
+        .locator('.mobile-stage-button[aria-pressed="true"]')
+        .count(),
+      1,
+    );
+    assert.equal(
+      await page.getByLabel("Étape concernée").inputValue(),
+      draftStageBefore,
+    );
+  }
+  assert.equal(
+    await explorer
+      .locator(".mobile-stage-scroll")
+      .evaluate((el) => el.scrollWidth > el.clientWidth && el.scrollLeft > 0),
+    true,
+  );
+  assert.equal(
+    await explorer
+      .getByRole("button", { name: "Étape suivante", exact: true })
+      .isDisabled(),
+    true,
+  );
+  await explorer
+    .getByRole("button", { name: "Étape précédente", exact: true })
+    .click();
+  assert.equal(
+    await explorer.locator("#stage-projects-title").textContent(),
+    "Administratif",
+  );
+  await explorer
+    .getByRole("button", { name: "Voir les projets : Cuverie", exact: true })
+    .focus();
+  await page.keyboard.press("Home");
+  assert.equal(
+    await explorer.locator("#stage-projects-title").textContent(),
+    "Parcelles",
+  );
+  await page.keyboard.press("ArrowRight");
+  assert.equal(
+    await explorer.locator("#stage-projects-title").textContent(),
+    "Vendanges",
+  );
+  await explorer
+    .getByRole("button", { name: "Voir les projets : Cuverie", exact: true })
+    .click();
+  await explorer
+    .getByRole("button", {
+      name: "Découvrir le projet : Du lot à la bouteille",
+      exact: true,
+    })
+    .click();
+  await page.getByRole("dialog").waitFor();
+  await page
+    .getByRole("button", { name: "Proposer une idée à cette étape" })
+    .click();
+  assert.equal(
+    await page.getByLabel("Étape concernée").inputValue(),
+    "cuverie",
+  );
+  await explorer
+    .getByRole("button", { name: "Voir les projets : Clients", exact: true })
+    .click();
+  await explorer
+    .getByRole("button", { name: "Proposer une idée pour cette étape" })
+    .click();
+  assert.equal(
+    await page.getByLabel("Étape concernée").inputValue(),
+    "clients",
+  );
+  assert.equal(
+    await page.evaluate(() => window.__navigationMarker),
+    "same-document",
+  );
+  await explorer.screenshot({ path: "artifacts/mobile-projects.png" });
   await page.getByRole("button", { name: "Ouvrir le menu" }).click();
   await nav.getByRole("button", { name: "Solutions", exact: true }).click();
   assert.equal(

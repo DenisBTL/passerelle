@@ -3,6 +3,7 @@ import { project, stages, solutions } from "../data";
 import { asset } from "../assets";
 import Icon, { GrapeMark } from "./Icon";
 import IdeaForm from "./IdeaForm";
+import MobileStageExplorer from "./MobileStageExplorer";
 
 export function SolutionCard({ solution, onClick, className = "" }) {
   return (
@@ -27,46 +28,46 @@ function Connectors() {
   return (
     <svg
       className="network-lines"
-      viewBox="0 0 1560 760"
+      viewBox="0 0 1560 900"
       preserveAspectRatio="none"
       aria-hidden="true"
     >
       <g className="connector green">
-        <path d="M593 277v27q0 14 16 14h95q16 0 16 16v18M533 277v75" />
+        <path d="M593 277v27q0 14 16 14h95q16 0 16 16v76M533 277v133" />
         <circle cx="593" cy="277" r="3.5" />
-        <circle cx="720" cy="352" r="3.5" />
-        <circle cx="533" cy="352" r="3.5" />
+        <circle cx="720" cy="410" r="3.5" />
+        <circle cx="533" cy="410" r="3.5" />
       </g>
       <g className="connector blue">
-        <path d="M870 274v23q0 15-15 15h-25q-15 0-15 15v25M245 476v52q0 17-17 17h-30" />
+        <path d="M870 274v23q0 15-15 15h-25q-15 0-15 15v83M245 550v72q0 17-17 17h-30" />
         <circle cx="870" cy="274" r="3.5" />
-        <circle cx="815" cy="352" r="3.5" />
-        <circle cx="245" cy="476" r="3.5" />
-        <circle cx="198" cy="545" r="3.5" />
+        <circle cx="815" cy="410" r="3.5" />
+        <circle cx="245" cy="550" r="3.5" />
+        <circle cx="198" cy="639" r="3.5" />
       </g>
       <g className="connector pink">
-        <path d="M1158 286v22q0 14-14 14h-19q-14 0-14 14v16" />
+        <path d="M1158 286v22q0 14-14 14h-19q-14 0-14 14v74" />
         <circle cx="1158" cy="286" r="3.5" />
-        <circle cx="1111" cy="352" r="3.5" />
+        <circle cx="1111" cy="410" r="3.5" />
       </g>
       <g className="connector purple">
-        <path d="M1406 393v37q0 14-14 14h-40" />
+        <path d="M1406 393v17" />
         <circle cx="1406" cy="393" r="3.5" />
-        <circle cx="1352" cy="444" r="3.5" />
+        <circle cx="1406" cy="410" r="3.5" />
       </g>
       <g className="connector orange">
-        <path d="M1008 476v65q0 16 16 16h19" />
-        <circle cx="1008" cy="476" r="3.5" />
-        <circle cx="1043" cy="557" r="3.5" />
+        <path d="M1008 550v85q0 16 16 16h19" />
+        <circle cx="1008" cy="550" r="3.5" />
+        <circle cx="1043" cy="651" r="3.5" />
       </g>
       <g className="connector gold">
-        <path d="M1270 476v20q0 16 16 16h21q16 0 16 16v19q0 14 14 14h16" />
-        <circle cx="1270" cy="476" r="3.5" />
-        <circle cx="1353" cy="561" r="3.5" />
+        <path d="M1270 550v40q0 16 16 16h21q16 0 16 16v19q0 14 14 14h16" />
+        <circle cx="1270" cy="550" r="3.5" />
+        <circle cx="1353" cy="655" r="3.5" />
       </g>
       <g className="connector burgundy">
-        <path d="M750 476v26" />
-        <circle cx="750" cy="476" r="4" />
+        <path d="M750 550v48" />
+        <circle cx="750" cy="550" r="4" />
       </g>
     </svg>
   );
@@ -213,6 +214,7 @@ export default function Journey({
           connexion.
         </p>
       </div>
+      <MobileStageExplorer onIdea={onIdea} onSolution={onSolution} />
       <div className="central-form">
         {formOpen ? (
           <IdeaForm

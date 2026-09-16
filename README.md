@@ -30,6 +30,7 @@ Le site est publié sur https://denisbtl.github.io/passerelle/. À chaque push s
 - `src/App.jsx` : navigation interne, formulaires et ouverture des fenêtres de détail.
 - `src/components/Header.jsx` : en-tête, navigation mobile et pied de page.
 - `src/components/Journey.jsx` : parcours, cartes métier et connecteurs.
+- `src/components/MobileStageExplorer.jsx` : frise tactile et projets filtrés par étape sur mobile et tablette.
 - `src/components/IdeaForm.jsx` : dépôt d’idée, validation native et confirmation simulée.
 - `src/components/ContentPanels.jsx` : projet, filtres des solutions, contact et participation.
 - `src/components/SupportingSections.jsx` : explications et cas d’usage.
@@ -41,7 +42,9 @@ Le nom se change dans `project.name`, au début de `src/data.js`. Mettre égalem
 
 ## Interactions
 
-- Cliquer sur l’une des neuf étapes ouvre le formulaire et présélectionne l’étape.
+- Sur ordinateur, cliquer sur l’une des neuf étapes ouvre le formulaire et présélectionne l’étape.
+- Sur mobile et tablette (jusqu’à 1 100 px), la frise défile latéralement. Toucher une icône affiche les projets associés sous la frise ; les flèches et le clavier permettent aussi de sélectionner une étape. Le bouton « Proposer une idée pour cette étape » ouvre le formulaire prérempli.
+- Les projets et leurs statuts sont fictifs, signalés comme démonstrations et centralisés dans `ongoingProjects` de `src/data.js` pour être remplacés par les données réelles.
 - Les champs d’une idée sont conservés en mémoire pendant les changements de rubrique.
 - Les cartes de connexion et les cas d’usage ouvrent leur description.
 - Les sous-rubriques du projet et les filtres de solutions actualisent le contenu sur place.

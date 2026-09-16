@@ -196,6 +196,74 @@ export const solutions = [
   },
 ];
 
+// Projets fictifs du prototype. Remplacer ces données par les projets réels
+// avant publication : aucun de ces statuts ne décrit une intégration active.
+export const ongoingProjects = [
+  {
+    id: "lot-bouteille",
+    solutionId: "trace",
+    title: "Du lot à la bouteille",
+    stageIds: ["parcelles", "vendanges", "cuverie", "mises"],
+    status: "En conception",
+    description:
+      "Relier les parcelles, les apports et les lots pour suivre l’histoire de chaque bouteille.",
+  },
+  {
+    id: "documents-export",
+    solutionId: "export",
+    title: "Les documents export sans ressaisie",
+    stageIds: ["mises", "administratif"],
+    status: "À l’étude",
+    description:
+      "Réutiliser les caractéristiques du vin pour préparer les fiches produit et les documents d’export.",
+  },
+  {
+    id: "coffrets-clients",
+    solutionId: "box",
+    title: "Des dégustations qui créent du lien",
+    stageIds: ["clients", "fidelisation"],
+    status: "En conception",
+    description:
+      "Associer les coffrets envoyés, les préférences et les retours de dégustation au suivi client.",
+  },
+  {
+    id: "opportunites-chr",
+    solutionId: "chr",
+    title: "Les vins disponibles, les bons acheteurs",
+    stageIds: ["stocks", "ventes"],
+    status: "À l’étude",
+    description:
+      "Rapprocher les disponibilités du domaine des besoins des restaurants, hôtels et bars.",
+  },
+  {
+    id: "assistant-commercial",
+    solutionId: "ai",
+    title: "Un suivi commercial mieux informé",
+    stageIds: ["ventes", "clients", "fidelisation"],
+    status: "À l’étude",
+    description:
+      "Préparer des suggestions de suivi à partir des échanges clients, à valider par l’équipe.",
+  },
+  {
+    id: "commande-livraison",
+    solutionId: "logistics",
+    title: "De la commande à la livraison",
+    stageIds: ["stocks", "ventes"],
+    status: "En conception",
+    description:
+      "Connecter les commandes, les mouvements de stock et le suivi des expéditions.",
+  },
+  {
+    id: "preparation-accises",
+    solutionId: "tax",
+    title: "Des déclarations mieux préparées",
+    stageIds: ["administratif"],
+    status: "À l’étude",
+    description:
+      "Rassembler les volumes et les destinations pour faciliter la préparation des déclarations.",
+  },
+];
+
 export const howItWorks = [
   {
     icon: "search",
