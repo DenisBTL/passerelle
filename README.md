@@ -22,7 +22,7 @@ npm.cmd run preview
 
 ## Déploiement
 
-Le site est publié sur https://denisbtl.github.io/passerelle/ par le workflow `.github/workflows/deploy.yml` à chaque push sur `main`. `vite.config.js` fixe `base` à `/passerelle/` ; les fichiers de `public/` référencés depuis le JSX passent par `asset()` (`src/assets.js`) pour recevoir ce préfixe. Si le dépôt est renommé, mettre à jour `base`.
+Le site est publié sur https://denisbtl.github.io/passerelle/. À chaque push sur `main`, le workflow `.github/workflows/deploy.yml` construit le site et pousse `dist/` sur la branche `gh-pages`, que GitHub Pages sert. `vite.config.js` fixe `base` à `/passerelle/` ; les fichiers de `public/` référencés depuis le JSX passent par `asset()` (`src/assets.js`) pour recevoir ce préfixe. Si le dépôt est renommé, mettre à jour `base`.
 
 ## Organisation
 
