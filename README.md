@@ -20,6 +20,10 @@ npm.cmd run preview
 
 `dist/` contient le site statique prêt à héberger. Aucun serveur applicatif ni service externe n’est nécessaire.
 
+## Déploiement
+
+Le site est publié sur https://denisbtl.github.io/passerelle/ par le workflow `.github/workflows/deploy.yml` à chaque push sur `main`. `vite.config.js` fixe `base` à `/passerelle/` ; les fichiers de `public/` référencés depuis le JSX passent par `asset()` (`src/assets.js`) pour recevoir ce préfixe. Si le dépôt est renommé, mettre à jour `base`.
+
 ## Organisation
 
 - `src/data.js` : nom du projet, navigation, étapes, solutions, textes et cas d’usage.
